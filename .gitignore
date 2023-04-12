@@ -1,7 +1,7 @@
-.data/
-.cache/
-.idea/
 *.tsv
 *.csv
 *.txt
 *.zip
+data
+cache
+.idea
