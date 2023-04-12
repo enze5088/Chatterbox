@@ -1,6 +1,6 @@
-./data
-./cache
-./idea
+./data/*
+./cache/*
+./idea/*
 .idea/misc.xml
 .idea/modules.xml
 .idea/RoastChatBot.iml
