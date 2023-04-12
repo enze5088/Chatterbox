@@ -1,2 +1,2 @@
-#Chatterbox
-A LLM base on BloomZ.
+# Chatterbox
+A Chinese Language Model base on BloomZ.
