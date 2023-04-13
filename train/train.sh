@@ -4,9 +4,9 @@ PORT_ID=$(expr $RANDOM + 1000)
 export OMP_NUM_THREADS=8
 torchrun  --nnodes=1 --nproc_per_node $NUM_GPU --master_port $PORT_ID train_bloomZ.py \
     --fp16 \
-    --deepspeed ./configs/ds_config.json \
-    --model_name_or_path "./model_file/bloomz-1b-zh/"  \
-    --train_file "./data/datasets/train_datasets.csv" \
+    --deepspeed ./configs/ds_offload_without_config.json \
+    --model_name_or_path "../model_file/bloomz-1b-zh/"  \
+    --train_file "../data/datasets/train_datasets.csv" \
     --validation_file "./data/datasets/test_datasets.csv" \
     --source_lang zh_XX \
     --target_lang zh_XX \
@@ -26,12 +26,10 @@ torchrun  --nnodes=1 --nproc_per_node $NUM_GPU --master_port $PORT_ID train_bloo
     --save_steps 5000 \
     --logging_steps 10 \
     --max_eval_samples 50 \
-    --max_source_length 768 \
-    --max_target_length 768 \
-    --generation_max_length 768 \
+    --max_source_length 700 \
+    --max_target_length 700 \
+    --generation_max_length 700 \
     --preprocessing_num_workers 32 \
     --predict_with_generate \
     --dataloader_num_workers 8 \
     "$@"
-
-#     --fp16 \
