@@ -5,7 +5,7 @@ export OMP_NUM_THREADS=8
 torchrun  --nnodes=1 --nproc_per_node $NUM_GPU --master_port $PORT_ID train_bloomZ.py \
     --fp16 \
     --deepspeed ./configs/ds_offload_without_config.json \
-    --model_name_or_path "../model_file/bloomz-1b-zh/"  \
+    --model_name_or_path "./model_file/bloomz-1b-zh/"  \
     --train_file "../data/datasets/train_datasets.csv" \
     --validation_file "./data/datasets/test_datasets.csv" \
     --source_lang zh_XX \

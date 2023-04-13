@@ -2,7 +2,9 @@
 *.csv
 *.txt
 *.zip
-data
+data/**/*.json
+data/**/*.jsonl
+data/**/*bio
 cache
 .idea
 model_file
