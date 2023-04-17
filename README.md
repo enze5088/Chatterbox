@@ -11,11 +11,15 @@ A Chinese Language Model base on BloomZ1B.
 
 #### STS
 
-待补充
+- [LCQMC](https://aistudio.baidu.com/aistudio/competition/detail/45/0/task-definition)
+- BQ CorpusBank Question Corpus
+- PAWS-X (中文) 
 
 #### QA
 
-待补充
+1. [cMedQA](https://github.com/zhangsheng93/cMedQA)
+2. [cMedQA-2](https://github.com/zhangsheng93/cMedQA2)
+3. [webMedQA](https://github.com/hejunqing/webMedQA)
 
 
 
