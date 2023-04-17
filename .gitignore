@@ -7,6 +7,7 @@
 data/**/*.json
 data/**/*.jsonl
 data/**/*bio
+chat/wxauto-main
 cache
 .idea
 model_file
