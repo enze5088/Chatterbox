@@ -11,3 +11,4 @@ chat/wxauto-main
 cache
 .idea
 model_file
+train/test.py
