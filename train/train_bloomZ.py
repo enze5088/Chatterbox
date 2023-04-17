@@ -394,9 +394,15 @@ def main():
         for i in range(len(inputs)):
             inp = inputs[i]
             content.append(str(inp))
+
         model_inputs = tokenizer(content, max_length=data_args.max_source_length, padding=padding, truncation=True)
-        # labels = {"input_ids": model_inputs['input_ids']}
-        model_inputs["labels"] = model_inputs['input_ids']
+        labels = model_inputs['input_ids']
+        if data_args.ignore_pad_token_for_loss:
+            labels = [
+                [(l if l != tokenizer.pad_token_id else -100) for l in label] for label in labels
+            ]
+
+        model_inputs["labels"] = labels
         return model_inputs
 
     if training_args.do_train:

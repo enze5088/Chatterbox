@@ -20,38 +20,34 @@ messages = [
 ]
 
 
-def single_job(name, output_dir):
-    # train_writer = csv.writer(open(output_dir + 'train_datasets.csv', 'a'), delimiter='\t')
-    # test_writer = csv.writer(open(output_dir + 'test_datasets.csv', 'a'), delimiter='\t')
+def single_process(datasets, output_dir):
     data = []
     too_long = 0
-    tokenizer = AutoTokenizer.from_pretrained(model_path)
-    for line in tqdm(open(name)):
-        line = json.loads(line)
+    tokenizer = AutoTokenizer.from_pretrained(model_path, use_fast=True)
+
+    for line in tqdm(datasets):
         prompt = line['prompt']
         target = line['output']
-        target = tokenizer.tokenize(target)
         source = line['source']
-
-        inputs = [{"role": "user", "content": prompt}, {"role": "assistant", "content": line['output']}]
-
-        if len(tokenizer.tokenize(prompt)) > MAX_LENGTH // 5:
+        if len(prompt) > MAX_LENGTH * 0.8:
             too_long += 1
             continue
 
-        if len(target) > MAX_LENGTH * 10:
+        if len(str(target)) > MAX_LENGTH * 10:
             too_long += 1
             continue
 
+        inputs = [{'role': "user", 'content': prompt}, {'role': 'assistant', 'content': line['output']}]
         inputs_seq = str(inputs)
         inputs_seq = "<s>" + inputs_seq + "<\s>"
-        if len(tokenizer.tokenize(inputs_seq)) < MAX_LENGTH:
+        if len(inputs_seq) <= MAX_LENGTH * 1.5:
             line = [inputs_seq, source]
             data.append(line)
         else:
+            target = tokenizer.tokenize(target)
             target_list = [target[i:i + Batch_Len] for i in range(0, len(target), Batch_Len)]
-            inputs_list = [{"role": "user", "content": prompt},
-                           {"role": "assistant", "content": tokenizer.convert_tokens_to_string(target_list[0])}]
+            inputs_list = [{'role': 'user', 'content': prompt},
+                           {'role': 'assistant', 'content': tokenizer.convert_tokens_to_string(target_list[0])}]
             # inputs_seq = json.dumps(inputs_list, ensure_ascii=False)
             inputs_seq = str(inputs_seq)
             inputs_seq = "<s>" + inputs_seq + "<\s>"
@@ -59,25 +55,41 @@ def single_job(name, output_dir):
             data.append(line)
             for item in target_list[1:]:
                 item = tokenizer.convert_tokens_to_string(item)
-                inputs_item = [{"role": "user", "content": sample(random_seq, 1)[0]},
-                               {"role": "assistant", "content": item}]
+                inputs_item = [{'role': 'user', 'content': sample(random_seq, 1)[0]},
+                               {'role': 'assistant', 'content': item}]
                 inputs_list.extend(inputs_item)
                 inputs = [inputs_list[0], inputs_list[-3], inputs_list[-2], inputs_list[-1]]
                 inputs_seq = str(inputs)
                 inputs_seq = "<s>" + inputs_seq + "<\s>"
-                if len(tokenizer.tokenize(inputs_seq)) > MAX_LENGTH:
-                    # print(inputs_seq)
-                    too_long += 1
                 line = [inputs_seq, source]
                 data.append(line)
+
+    return data, too_long
+
+
+def single_job(name, output_dir, job_nums=4):
+    # train_writer = csv.writer(open(output_dir + 'train_datasets.csv', 'a'), delimiter='\t')
+    # test_writer = csv.writer(open(output_dir + 'test_datasets.csv', 'a'), delimiter='\t')
+    data = []
+    too_long = 0
+
+    datasets = [json.loads(line) for line in open(name)]
+    batch_size = int(len(datasets) // job_nums)
+
+    input_list = [datasets[i:i + batch_size] for i in range(0, len(datasets), batch_size)]
+    print(job_nums, batch_size, len(input_list))
+    result = Parallel(n_jobs=job_nums) \
+        (delayed(single_process)(input_block, output_dir) for input_block in tqdm(input_list))
+    for i in range(len(result)):
+        data.extend(result[i][0])
+        too_long += result[i][1]
     return data, too_long
 
 
 def main(in_dir='./collect_datasets/', output_dir='./datasets/'):
     file_names = os.listdir(in_dir)
     file_names = ['firefly.txt', 'Belle.txt', 'alpaca_gpt4_data_zh.txt']
-    file_names = ['alpaca_gpt4_data_zh.txt']
-
+    file_names = ['firefly.txt', 'alpaca_gpt4_data_zh.txt']
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
     train_fin = open(output_dir + 'train_datasets.csv', 'w')
@@ -89,7 +101,7 @@ def main(in_dir='./collect_datasets/', output_dir='./datasets/'):
 
     train_writer.writerow(title)
     test_writer.writerow(title)
-    job_nums = len(file_names) if len(file_names) < 10 else 10
+    job_nums = len(file_names) if len(file_names) <= 4 else 4
     names = [in_dir + name for name in file_names]
     result = Parallel(n_jobs=job_nums) \
         (delayed(single_job)(split_block, output_dir) for split_block in tqdm(names))
