@@ -3,6 +3,7 @@
 *.txt
 *.zip
 *.png
+*.pyc
 data/**/*.json
 data/**/*.jsonl
 data/**/*bio
