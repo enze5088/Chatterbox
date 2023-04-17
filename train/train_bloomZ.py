@@ -390,12 +390,10 @@ def main():
 
     def preprocess_function(examples):
         inputs = [ex for ex in examples["inputs"]]
-        targets = [ex for ex in examples["target"]]
         content = []
         for i in range(len(inputs)):
             inp = inputs[i]
-            tgt = targets[i]
-            content.append(str(inp) + str(tgt))
+            content.append(str(inp))
         model_inputs = tokenizer(content, max_length=data_args.max_source_length, padding=padding, truncation=True)
         # labels = {"input_ids": model_inputs['input_ids']}
         model_inputs["labels"] = model_inputs['input_ids']
