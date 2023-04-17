@@ -675,6 +675,28 @@ def firefly():
     print('max_len:', max_len)
     print(max_ans)
 
+# 1.1M
+def dolloy():
+    datasets_name = sys._getframe().f_code.co_name
+    writer = open('./collect_datasets/{}.txt'.format(datasets_name), 'w')
+    base_dir = "./{}/databricks-dolly-15k.jsonl".format(datasets_name)
+    fin = open(base_dir)
+    max_len = 0
+    max_ans = ''
+    for line in tqdm(fin):
+        line = json.loads(line)
+        prompt = line["instruction"]
+        ans = line["context"]
+        if ans == 'nan':
+            continue
+        if len(str(ans)) > max_len:
+            max_len = len(ans)
+            max_ans = ans
+        item = {"prompt": prompt, "output": ans, "source": datasets_name + ':' + line["category"]}
+        item = json.dumps(item, ensure_ascii=False)
+        writer.write(item + '\n')
+    print('max_len:', max_len)
+    print(max_ans)
 
 if __name__ == '__main__':
     # cMedQA1()
@@ -692,5 +714,5 @@ if __name__ == '__main__':
     # alpaca_gpt4_data_zh()
     # Belle()
     # firefly()
-
+    # dolloy()
     print('process over')
