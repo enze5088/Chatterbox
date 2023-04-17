@@ -4,7 +4,7 @@
 A Chinese Language Model base on BloomZ1B.
 
 ### Datasets
-#### Chinese Insturct Data
+#### Insturct Data
 - [Belle](https://huggingface.co/BelleGroup)
 - [alpaca_gpt4_data_zh](https://github.com/Instruction-Tuning-with-GPT-4/GPT-4-LLM/blob/main/data/alpaca_gpt4_data_zh.json)
 - [firefly](https://huggingface.co/datasets/YeungNLP/firefly-train-1.1M)
