@@ -7,7 +7,7 @@ torchrun  --nnodes=1 --nproc_per_node $NUM_GPU --master_port $PORT_ID train_bloo
     --deepspeed ./configs/ds_offload_without_config.json \
     --model_name_or_path "./model_file/bloomz-1b-zh/"  \
     --train_file "../data/datasets/train_datasets.csv" \
-    --validation_file "./data/datasets/test_datasets.csv" \
+    --validation_file "../data/datasets/test_datasets.csv" \
     --source_lang zh_XX \
     --target_lang zh_XX \
     --learning_rate 3e-5 \
@@ -17,8 +17,8 @@ torchrun  --nnodes=1 --nproc_per_node $NUM_GPU --master_port $PORT_ID train_bloo
     --num_train_epochs 1 \
     --output_dir './result/total/' \
     --save_total_limit 3 \
-    --per_device_train_batch_size 10 \
-    --per_device_eval_batch_size 10 \
+    --per_device_train_batch_size 8 \
+    --per_device_eval_batch_size 8 \
     --cache_dir './cache/' \
     --overwrite_output_dir \
     --predict_with_generate \
@@ -28,6 +28,7 @@ torchrun  --nnodes=1 --nproc_per_node $NUM_GPU --master_port $PORT_ID train_bloo
     --max_eval_samples 50 \
     --max_source_length 700 \
     --max_target_length 700 \
+    --val_max_target_length 700 \
     --generation_max_length 700 \
     --preprocessing_num_workers 32 \
     --predict_with_generate \
