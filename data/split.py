@@ -89,7 +89,6 @@ def single_job(name, output_dir, job_nums=4):
 def main(in_dir='./collect_datasets/', output_dir='./datasets/'):
     file_names = os.listdir(in_dir)
     file_names = ['firefly.txt', 'Belle.txt', 'alpaca_gpt4_data_zh.txt']
-    file_names = ['firefly.txt', 'alpaca_gpt4_data_zh.txt']
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
     train_fin = open(output_dir + 'train_datasets.csv', 'w')
