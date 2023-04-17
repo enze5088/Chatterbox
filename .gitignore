@@ -2,6 +2,7 @@
 *.csv
 *.txt
 *.zip
+*.png
 data/**/*.json
 data/**/*.jsonl
 data/**/*bio
