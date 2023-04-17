@@ -22,7 +22,7 @@ import logging
 import os
 import sys
 from dataclasses import dataclass, field
-from typing import Optional
+from typing import Optional, List
 
 import datasets
 import numpy as np
@@ -30,7 +30,7 @@ from datasets import load_dataset
 
 import evaluate
 import transformers
-from tqdm import tqdm
+
 from transformers.trainer_seq2seq import Seq2SeqTrainer
 from transformers import (
     AutoConfig,
@@ -44,16 +44,13 @@ from transformers import (
     MBartTokenizer,
     MBartTokenizerFast,
     Seq2SeqTrainingArguments,
-    default_data_collator,
     set_seed, MBartForConditionalGeneration, BartForConditionalGeneration, AutoModelForCausalLM, BloomForCausalLM,
 )
 from transformers.trainer_utils import get_last_checkpoint
 from transformers.utils import check_min_version
 from transformers.utils.versions import require_version
 
-# Will error if the minimal version of Transformers is not installed. Remove at your own risks.
-# from predict.bloom import BloomForCausalLM, BloomForConditionalGeneration
-from tool.tool import sum_parameters
+from tool.tool import sum_parameters, DataCollatorForCLM
 
 check_min_version("4.26.0")
 
@@ -397,13 +394,15 @@ def main():
 
         model_inputs = tokenizer(content, max_length=data_args.max_source_length, padding=padding, truncation=True)
         labels = model_inputs['input_ids']
-        if data_args.ignore_pad_token_for_loss:
+
+        if data_args.pad_to_max_length and data_args.ignore_pad_token_for_loss:
             labels = [
                 [(l if l != tokenizer.pad_token_id else -100) for l in label] for label in labels
             ]
 
         model_inputs["labels"] = labels
         return model_inputs
+
 
     if training_args.do_train:
         if "train" not in raw_datasets:
@@ -459,12 +458,10 @@ def main():
             )
 
     # Data collator
-    label_pad_token_id = tokenizer.pad_token_id
-
-    data_collator = DataCollatorForSeq2Seq(
-        tokenizer,
-        model=model,
-        label_pad_token_id=label_pad_token_id,
+    padding = True
+    data_collator = DataCollatorForCLM(
+        tokenizer=tokenizer,
+        padding=padding,
         pad_to_multiple_of=8 if training_args.fp16 else None,
     )
 

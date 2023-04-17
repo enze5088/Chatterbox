@@ -14,7 +14,7 @@ torchrun  --nnodes=1 --nproc_per_node $NUM_GPU --master_port $PORT_ID train_bloo
     --do_train \
     --do_eval \
     --evaluation_strategy steps \
-    --num_train_epochs 3 \
+    --num_train_epochs 1 \
     --output_dir './result/total/' \
     --save_total_limit 3 \
     --per_device_train_batch_size 8 \
