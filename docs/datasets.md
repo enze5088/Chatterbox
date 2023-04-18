@@ -6,6 +6,7 @@
 - [alpaca_gpt4_data_zh](https://github.com/Instruction-Tuning-with-GPT-4/GPT-4-LLM/blob/main/data/alpaca_gpt4_data_zh.json)
 - [firefly](https://huggingface.co/datasets/YeungNLP/firefly-train-1.1M)
 - [dolly](https://github.com/databrickslabs/dolly/tree/master/data)
+- [Self-Instruct](https://github.com/yizhongw/self-instruct)
 
 ## 高质量对话数据集
 
@@ -34,6 +35,7 @@
 - BQ CorpusBank Question Corpus （链接同上）
 - PAWS-X (中文) （链接同上）
 - [OCNLI](https://github.com/CLUEbenchmark/OCNLI)
+- [LuoTuo](https://github.com/LC1332/Luotuo-Text-Embedding)
 
 ## 文本生成
 
