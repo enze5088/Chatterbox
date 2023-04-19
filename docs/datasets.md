@@ -37,6 +37,10 @@
 - [OCNLI](https://github.com/CLUEbenchmark/OCNLI)
 - [LuoTuo](https://github.com/LC1332/Luotuo-Text-Embedding)
 
+### 段落排序
+
+- [T2Ranking](https://github.com/THUIR/T2Ranking)
+
 ## 文本生成
 
 #### 问答数据
