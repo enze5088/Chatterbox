@@ -12,3 +12,4 @@ cache
 .idea
 model_file
 train/test.py
+train/save/train_bloomZ.py
