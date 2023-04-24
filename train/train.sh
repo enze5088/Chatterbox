@@ -6,14 +6,14 @@ torchrun  --nnodes=1 --nproc_per_node $NUM_GPU --master_port $PORT_ID train_clm.
     --fp16 \
     --deepspeed ./configs/ds_offload_without_config.json \
     --model_name_or_path "./model_file/LLaMA-zh-base/"  \
-    --train_file "../data/datasets/train_datasets.csv" \
-    --validation_file "../data/datasets/test_datasets.csv" \
+    --train_file "../data/pretrain_datasets/datasets/train.csv" \
+    --validation_file "../data/pretrain_datasets/datasets/test.csv" \
     --learning_rate 1e-4 \
     --do_train \
     --do_eval \
     --evaluation_strategy steps \
     --num_train_epochs 1 \
-    --output_dir './result/total/' \
+    --output_dir './result/LLaMA-zh-base/' \
     --save_total_limit 3 \
     --per_device_train_batch_size 16 \
     --per_device_eval_batch_size 16 \
@@ -25,5 +25,5 @@ torchrun  --nnodes=1 --nproc_per_node $NUM_GPU --master_port $PORT_ID train_clm.
     --max_eval_samples 50 \
     --block_size 256 \
     --preprocessing_num_workers 32 \
-    --dataloader_num_workers 8 \
+    --dataloader_num_workers 12 \
     "$@"
