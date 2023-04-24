@@ -19,8 +19,10 @@ Read this in [English](./README_EN.md).
 
 并整理当前可用训练的数据集，目前已整理30+数据集。
 详细数据集收集与整理见此[介绍](./docs/datasets.md)
+### 开源数据集
+由本人爬取并整理的部分数据。
 
-
+- [人民日报数据集](https://pan.baidu.com/s/1g47vdWwGjAXleEYR0GcfSg?pwd=l6q8) ：194603月-201012月 其中2004-2010年数据集缺失标题并有格式混乱的现象。
 
 
 ## License
