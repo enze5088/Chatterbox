@@ -2,7 +2,7 @@ export CUDA_VISIBLE_DEVICES=0,1,2,3
 NUM_GPU=4
 PORT_ID=$(expr $RANDOM + 1000)
 export OMP_NUM_THREADS=8
-torchrun  --nnodes=1 --nproc_per_node $NUM_GPU --master_port $PORT_ID train_bloomZ.py \
+torchrun  --nnodes=1 --nproc_per_node $NUM_GPU --master_port $PORT_ID train_clm.py \
     --fp16 \
     --deepspeed ./configs/ds_offload_without_config.json \
     --model_name_or_path "./model_file/bloomz-1b-zh/"  \
