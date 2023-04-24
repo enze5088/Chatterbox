@@ -73,7 +73,7 @@
 - [悟道](https://www.scidb.cn/en/detail?dataSetId=c6a3fe684227415a9db8e21bac4a15ab) 200G
 - [MNBVC](https://github.com/esbatmop/MNBVC)
 - [人民日报数据集](https://pan.baidu.com/s/1g47vdWwGjAXleEYR0GcfSg?pwd=l6q8) ：194603月-201012月 其中2004-2010年数据集缺失标题并有格式混乱的现象。
-
+- [Chinese Scientific Literature Dataset](https://github.com/ydli-ai/CSL)
 
 ## 多模态数据
 

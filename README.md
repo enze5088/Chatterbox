@@ -8,10 +8,10 @@ Read this in [English](./README_EN.md).
 
 </div>
 
+本项目将持续收集整理并分享关于大语言模型的相关预训练数据集，指令微调数据集，开源模型，应用等相关内容。
 
-
-基于BloomZ1B2 的中文语言模型。裁剪词表和WordsEmbedding后参数量为0.9B左右，使用开源数据进行训练。并搭建Web聊天Demo与微信机器人。
-
+1. 基于BloomZ1B2 的中文语言模型。裁剪词表和WordsEmbedding后参数量为0.9B左右，使用开源数据进行训练。并搭建Web聊天Demo与微信机器人。
+2. 从头预训练中文LLaMA模型
 
 ## 数据集
 
