@@ -24,6 +24,7 @@ torchrun  --nnodes=1 --nproc_per_node $NUM_GPU --master_port $PORT_ID train_clm.
     --logging_steps 10 \
     --max_eval_samples 50 \
     --block_size 256 \
-    --preprocessing_num_workers 48 \
+    --preprocessing_num_workers 100 \
+    --ddp_timeout 7200 \
     --dataloader_num_workers 12 \
     "$@"
