@@ -1,7 +1,7 @@
 # Chatterbox
 Read this in [English](./README_EN.md).
 
-<div align="center">
+<div align="left">
 
 <a href="https://github.com/enze5088/Chatterbox/stargazers">![GitHub Repo stars](https://img.shields.io/github/stars/enze5088/Chatterbox)</a>
 [![Code License](https://img.shields.io/badge/Code%20License-Apache_2.0-green.svg)](https://github.com/LianjiaTech/BELLE/blob/main/LICENSE)
