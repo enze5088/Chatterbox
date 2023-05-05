@@ -28,7 +28,7 @@ Notes:
 ### 中文预训练数据
 
 - 新浪新闻数据（SinaNews），220万条新闻文档数据
-- 人民日报数据（People's Daily Datasets），
+- 人民日报数据（People's Daily Datasets），148万条人民日报数据（1949-2006）
 - [维基百科(wiki2019zh)，100万个结构良好的中文词条](https://github.com/brightmart/nlp_chinese_corpus)
 - [新闻语料(news2016zh)，250万篇新闻，含关键词、描述](https://github.com/brightmart/nlp_chinese_corpus)
 - [社区问答json版(webtext2019zh)，410万个高质量社区问答](https://github.com/brightmart/nlp_chinese_corpus)
