@@ -30,7 +30,7 @@ Read this in [English](./README_EN.md).
 ## 数据集
 整理并当前可用的中文NLP相关的大模型训练的数据集，目前已整理30+。并陆续发布新爬取的中文数据集。
 
-详细数据集收集与整理见此[介绍](./docs/datasets.md)
+[详细介绍](./docs/datasets.md)
 
 ### 开源数据集
 
