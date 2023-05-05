@@ -10,7 +10,7 @@
 
 ## 高质量对话数据集
 
-- **[oasst1](https://huggingface.co/datasets/OpenAssistant/oasst1)**
+- [oasst1](https://huggingface.co/datasets/OpenAssistant/oasst1)
 
 - [RefGPT](https://github.com/ziliwangnlp/RefGPT)
 

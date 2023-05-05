@@ -117,5 +117,39 @@ def main(in_dir='./collect_datasets/', output_dir='./datasets/'):
     test_writer.writerows(test_data)
 
 
+def process(in_dir='./collect_datasets/', output_dir='./datasets/'):
+    file_names = os.listdir(in_dir)
+    file_names = ['firefly.txt', 'Belle.txt', 'alpaca_gpt4_data_zh.txt']
+    if not os.path.exists(output_dir):
+        os.makedirs(output_dir)
+    train_fin = open(output_dir + 'total_train_datasets.csv', 'w')
+    test_fin = open(output_dir + 'total_test_datasets.csv', 'w')
+    train_writer = csv.writer(train_fin, delimiter='\t')
+    test_writer = csv.writer(test_fin, delimiter='\t')
+    data = []
+    title = ['inputs', 'source']
+
+    train_writer.writerow(title)
+    test_writer.writerow(title)
+    job_nums = len(file_names) if len(file_names) <= 4 else 4
+    names = [in_dir + name for name in file_names]
+    for name in tqdm(names):
+        datasets = [json.loads(line) for line in open(name)]
+        for line in datasets:
+            prompt = line['prompt']
+            target = line['output']
+            source = line['source']
+            content = str(prompt) + '   ' + str(target)
+            content = content.replace('\n',' \\n ')
+            data.append([content, source])
+
+    shuffle(data)
+
+    split_num = int(len(data) * 0.005)
+    train_data = data[:-split_num]
+    test_data = data[-split_num:]
+    train_writer.writerows(train_data)
+    test_writer.writerows(test_data)
+
 if __name__ == '__main__':
-    main()
+    process()

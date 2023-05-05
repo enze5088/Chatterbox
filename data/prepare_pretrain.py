@@ -2,9 +2,10 @@ import csv
 import json
 import os
 import random
+import re
 import sys
-
 from tqdm import tqdm
+from tool import remove_url
 
 csv.field_size_limit(sys.maxsize // 1000)
 
@@ -25,10 +26,15 @@ def webtext2019zh():
             else:
                 prompt = title
             ans = line['content']
+            content = prompt + ans
+            content = remove_url(content)
             star = int(line['star'])
             if star < 5:
                 continue
-            line = [prompt + ans, datasets_name]
+            if len(content) < 5:
+                continue
+
+            line = [content, datasets_name]
             writer.writerow(line)
 
 
@@ -62,8 +68,8 @@ def wiki_zh():
                 content = line['text']
                 content = content.replace("（）", '')
                 contents = content.split('\n')
-                contents = [seq for seq in contents if not seq == '']
-                content = "\\n ".join(contents[:])
+                contents = [seq.replace('\n','\\n') for seq in contents if not seq == '']
+                content = " \\n ".join(contents[:])
                 # ans = content
                 line = [content, datasets_name]
                 writer.writerow(line)
@@ -130,7 +136,7 @@ def cat_pretrain_data():
         name = in_dir + name
         reader = csv.reader((line.replace('\0', '') for line in open(name, errors='ignore')), delimiter='\t')
         for line in tqdm(reader):
-            line[0] = line[0].relace('\t',' ')
+            line[0] = line[0].replace('\t',' ')
             p = random.random()
             if len(line[0].replace(' ', '')) < 5:
                 continue
@@ -161,6 +167,9 @@ def Belle():
                 max_ans = ans
             content = prompt + ans
             content = content.replace('\n',' \\n ')
+            content = remove_url(content)
+            if len(content.rstrip()) < 5:
+                continue
             # item = {"prompt": prompt, "output": ans, "source": datasets_name}
             # item = json.dumps(item, ensure_ascii=False)
             line = [content, datasets_name]
@@ -169,10 +178,11 @@ def Belle():
     print(max_ans)
 
 
+
 if __name__ == '__main__':
-    # webtext2019zh()
-    # wiki_zh()
-    # new2016zh()
+    webtext2019zh()
+    wiki_zh()
+    new2016zh()
     # csl()
     # Belle()
     # webtext2019zh()
