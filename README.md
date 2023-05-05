@@ -22,7 +22,7 @@ Read this in [English](./README_EN.md).
 2. 中文基础模型分享
    1. 基于BloomZ 1B2 的中文语言模型。裁剪词表和WordsEmbedding后参数量为0.9B左右，使用开源指令数据进行微调训练。目前主要使用Belle,alpaca_gpt4_data_zh,firefly 微调。
    2. 从头预训练中文LLaMA模型。
-      1. [Chatterbox-LLaMA-zh-base](https://huggingface.co/TurboPascal/Chatterbox-LLaMA-zh-base) 使用33G语料从头预训练初始化的LLaMA-base中文模型，重新制作了中文词表与分词器。详细介绍见[该文档](./docs/model/llama-zh-base)
+      1. [Chatterbox-LLaMA-zh-base](https://huggingface.co/TurboPascal/Chatterbox-LLaMA-zh-base) 使用33G语料从头预训练初始化的LLaMA-base中文模型，重新制作了中文词表与分词器。详细介绍见[该文档](./docs/model/llama-zh-base.md)
 3. 语言模型的相关应用
    1. 基于大模型的Web聊天Demo与微信机器人实现。
 
