@@ -18,7 +18,7 @@ Read this in [English](./README_EN.md).
 
 ### 包含内容
 
-1. 中文NLP相关的可用的数据集，分享开源与发布新爬取的数据集。详细介绍[见此](./docs/datasets.md)
+1. 中文NLP相关的可用的数据集，分享开源与发布新爬取的数据集。详细介绍[见此](./docs/datasets/readme.md)
 2. 中文基础模型分享
    1. 基于BloomZ 1B2 的中文语言模型。裁剪词表和WordsEmbedding后参数量为0.9B左右，使用开源指令数据进行微调训练。目前主要使用Belle,alpaca_gpt4_data_zh,firefly 微调。
    2. 从头预训练中文LLaMA模型。
@@ -30,14 +30,14 @@ Read this in [English](./README_EN.md).
 ## 数据集
 整理并当前可用的中文NLP相关的大模型训练的数据集，目前已整理30+。并陆续发布新爬取的中文数据集。
 
-[详细介绍](./docs/datasets.md)
+- [详细介绍](./docs/datasets/readme.md)
 
 ### 开源数据集
 
 本项目爬取并整理的部分数据。
 
 - [人民日报数据集](https://pan.baidu.com/s/1g47vdWwGjAXleEYR0GcfSg?pwd=l6q8) ：194603月-201012月 其中2004-2010年数据集缺失标题并有格式混乱的现象。
-- 新浪新闻数据集：
+- [新浪新闻数据集](https://pan.baidu.com/s/1PdWBbLIGBhc4iHn7PMETKg?pwd=a4tc)：新浪网首页新闻文档，2002年-2023年全部首页链接的新闻文档。
 
 ## 模型
 
