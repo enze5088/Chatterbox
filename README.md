@@ -1,12 +1,13 @@
 # Chatterbox
-
 Read this in [English](./README_EN.md).
 
 <div align="left">
+
 [![Code License](https://img.shields.io/badge/Code%20License-Apache_2.0-green.svg)](https://github.com/LianjiaTech/BELLE/blob/main/LICENSE)
 [![Model License](https://img.shields.io/badge/Model%20License-GPL_v3.0-green.svg)]()
 ![GitHub last commit](https://img.shields.io/github/last-commit/enze5088/Chatterbox)
 <a href="https://github.com/enze5088/Chatterbox/stargazers">![GitHub Repo stars](https://img.shields.io/github/stars/enze5088/Chatterbox)</a>
+
 </div>
 
 本项目持续收集整理并分享关于大语言模型的相关内容，主要包括以下三类：
