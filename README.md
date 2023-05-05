@@ -46,7 +46,7 @@ Read this in [English](./README_EN.md).
 - [模型权重下载](https://huggingface.co/TurboPascal/Chatterbox-LLaMA-zh-base)
 - [详细介绍](./docs/model/llama-zh-base.md)
 
-使用33G中文语料重头开始预训练的Llama-base模型，参数量约为0.8B左右。旨在提供可用的中小型基础模型。针对中文语料重新构建了embedding层和tokenizer。未经过指令微调。无需遵守原LLaMA权重协议。
+使用33G中文语料重头开始预训练的Llama-base模型，参数量约为0.8B左右。旨在提供可用的中小型基础模型。针对中文语料重新构建了embedding层和tokenizer，未经过指令微调。无需遵守原LLaMA权重协议。
 
 #### 使用数据
 
