@@ -43,9 +43,23 @@ Read this in [English](./README_EN.md).
 
 ### Chatterbox-LLaMA-zh-base
 
-[huggingface链接](https://huggingface.co/TurboPascal/Chatterbox-LLaMA-zh-base)
+- [模型权重下载](https://huggingface.co/TurboPascal/Chatterbox-LLaMA-zh-base)
+- [详细介绍](./docs/model/llama-zh-base)
 
 使用33G中文语料重头开始预训练的Llama-base模型，参数量约为0.8B左右。旨在提供可用的中小型基础模型。针对中文语料重新构建了embedding层和tokenizer。未经过指令微调。无需遵守原LLaMA权重协议。
+
+#### 使用数据
+
+- 新浪新闻数据（SinaNews），220万条新闻文档数据
+- 人民日报数据（People's Daily Datasets），148万条人民日报数据（1949-2006）
+- [维基百科(wiki2019zh)，100万个结构良好的中文词条](https://github.com/brightmart/nlp_chinese_corpus)
+- [新闻语料(news2016zh)，250万篇新闻，含关键词、描述](https://github.com/brightmart/nlp_chinese_corpus)
+- [社区问答json版(webtext2019zh)，410万个高质量社区问答](https://github.com/brightmart/nlp_chinese_corpus)
+- [THUCNews数据(THUCNews) ，74万篇新闻文档（2.19 GB）](http://thuctc.thunlp.org/#%E4%B8%AD%E6%96%87%E6%96%87%E6%9C%AC%E5%88%86%E7%B1%BB%E6%95%B0%E6%8D%AE%E9%9B%86THUCNews)
+- [评论数据-语料 （comments2019zh_corpus），240万条评论数据](https://github.com/CLUEbenchmark/CLUECorpus2020)
+- [社区互动-语料 （webText2019zh_corpus），310W条社区互动数据](https://github.com/CLUEbenchmark/CLUECorpus2020)
+- [科学文献数据（CSL）,  约40W篇中文核心期刊文献摘要](https://github.com/ydli-ai/CSL)
+- [Belle数据集](https://huggingface.co/datasets/BelleGroup/train_2M_CN)
 
 ## License
 
