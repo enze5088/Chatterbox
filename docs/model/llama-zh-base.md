@@ -42,7 +42,7 @@ Notes:
 
 1. 由于原版llama对中文编码的支持不够友好，于是我重头训练了中文+英文的llama的tokenizer。重头训练tokenizers的代码和相关内容参见[此处](../../example/TrainTokenizersExample/readme.md)，使用从MC4中中文语料和英文语料里采样的数据。
 1. 数据集采用上述数据，参考本项目data部分的代码和train部分的代码。
-1. 训练配置：4V100，训练时长约70-80小时。
+1. 训练配置：4*V100，训练时长约70-80小时。
 
 ## 测试评估
 
