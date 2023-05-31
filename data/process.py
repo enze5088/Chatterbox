@@ -686,7 +686,8 @@ def dolloy():
     for line in tqdm(fin):
         line = json.loads(line)
         prompt = line["instruction"]
-        ans = line["context"]
+        ans = line["context"] + ' ' + line["response"]
+        # ans = ans.replace('\n','\\n')
         if ans == 'nan':
             continue
         if len(str(ans)) > max_len:
@@ -698,7 +699,35 @@ def dolloy():
     print('max_len:', max_len)
     print(max_ans)
 
-
+def moss():
+    max_len = 0
+    max_ans = ''
+    datasets_name = sys._getframe().f_code.co_name
+    datasets_dir = "./{}/".format(datasets_name)
+    writer = open('./collect_datasets/{}.txt'.format(datasets_name), 'w')
+    base_dir_list = os.listdir(datasets_dir)
+    for base_dir in base_dir_list:
+        base_dir = datasets_dir + base_dir
+        print(base_dir)
+        fin = open(base_dir)
+        for lines in tqdm(fin):
+            lines = json.loads(lines)
+            print(type(lines))
+            print(len(lines))
+            exit()
+            prompt = line["instruction"]
+            ans = line["context"] + ' ' + line["response"]
+            # ans = ans.replace('\n','\\n')
+            if ans == 'nan':
+                continue
+            if len(str(ans)) > max_len:
+                max_len = len(ans)
+                max_ans = ans
+            item = {"prompt": prompt, "output": ans, "source": datasets_name + ':' + line["category"]}
+            item = json.dumps(item, ensure_ascii=False)
+            writer.write(item + '\n')
+    print('max_len:', max_len)
+    print(max_ans)
 
 if __name__ == '__main__':
     # cMedQA1()
@@ -717,4 +746,5 @@ if __name__ == '__main__':
     # Belle()
     # firefly()
     # dolloy()
+    # moss()
     print('process over')
