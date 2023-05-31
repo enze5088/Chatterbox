@@ -14,3 +14,4 @@ model_file
 src/train/test.py
 src/train/save
 src/train/train.sh
+src/train/run.sh
