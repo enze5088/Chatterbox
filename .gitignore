@@ -11,6 +11,6 @@ chat/wxauto-main
 cache
 .idea
 model_file
-train/test.py
-train/save/train_bloomZ.py
+src/train/test.py
+src/train/save
 src/train/train.sh
