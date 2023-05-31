@@ -19,8 +19,10 @@ class Predicter:
                                 max_length=self.max_length, truncation=True)
         inputs.to(self.device)
         outputs = self.model.generate(**inputs,
+                                      # min_new_tokens=200,
+                                      max_new_tokens=700,
                                       num_return_sequences=num_return_sequences,
-                                      max_length=self.max_length,
+                                      # max_length=self.max_length,
                                       # top_k=top_k,
                                       # top_p=top_p,
                                       # no_repeat_ngram_size=no_repeat_ngram_size,

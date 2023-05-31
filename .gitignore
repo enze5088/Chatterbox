@@ -13,3 +13,4 @@ cache
 model_file
 train/test.py
 train/save/train_bloomZ.py
+src/train/train.sh
