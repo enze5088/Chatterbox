@@ -10,7 +10,7 @@ data/**/*bio
 chat/wxauto-main
 cache
 .idea
-model_file
+model_file/**/*.bin
 src/train/test.py
 src/train/save
 src/train/train.sh
