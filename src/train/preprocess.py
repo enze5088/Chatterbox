@@ -11,9 +11,10 @@ from itertools import chain
 import sys
 
 csv.field_size_limit(sys.maxsize // 10)
+#数据基础处理目录
 base_dir = './data/'
 # 设置为自己的模型路径
-model_path = "./models/LLaMA-zh-base"
+model_path = "./model_files/LLaMA-zh-base"
 # 设置为自己的文本长度
 block_size = 512
 job_nums = 300
