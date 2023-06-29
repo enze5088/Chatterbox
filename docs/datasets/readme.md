@@ -7,6 +7,8 @@
 - [firefly](https://huggingface.co/datasets/YeungNLP/firefly-train-1.1M)
 - [dolly](https://github.com/databrickslabs/dolly/tree/master/data)
 - [Self-Instruct](https://github.com/yizhongw/self-instruct)
+- [YuLan-Chat](https://github.com/RUC-GSAI/YuLan-Chat)
+
 
 ## 高质量对话数据集
 
